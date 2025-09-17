@@ -1,0 +1,46 @@
+<section class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow p-4">    
+        <div class="d-flex justify-content-center align-items-center mb-3">
+            <img src="assets/icons/profile.png" alt="profile" width="100">
+        </div>
+        <h3 class="text-center mb-3 mt-2">
+            Login
+        </h3>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <label for="username" class="form-label mb-3">
+                Username
+            </label>
+            <input 
+                type="text" 
+                id="username" 
+                formControlName="username"
+                class="form-control"
+            >
+
+            <div *ngIf="username?.invalid && username?.touched" class="text-danger">
+                Username is required    
+            </div>
+            
+            <label for="password" class="form-label mb-3 mt-3">
+                Passsword
+            </label>
+            <input 
+                type="password" 
+                id="password" 
+                formControlName="password"
+                class="form-control"
+            >
+            
+            <div *ngIf="password?.invalid && password?.touched" class="text-danger">
+                Password is required
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mb-3 mt-5" [disabled]="loginForm.invalid">
+                Login
+            </button>
+            <div *ngIf="errorMessage" class="text-danger">
+                {{errorMessage}}
+            </div>
+        </form>
+    </div>
+</section>
